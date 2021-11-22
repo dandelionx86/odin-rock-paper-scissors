@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <script>
+        // randomly return 'Rock' 'Paper' or 'Scissors'
+        function computerPlay() {
+            
+            let selection = ["Rock", "Paper", "Scissors"];
+            
+            // select from index randomly
+            const computerSelection = selection[Math.floor(Math.random() * selection.length)];
+            return computerSelection;
+        }
+
+        function playerPlay() {
+            // get player selection
+            let playerSelection = window.prompt("Rock, Paper, Scissors, Shoot! (Enter your selection)");
+            
+            // playerSelection function is case sensitive
+            // changes lower-case input to upper-case
+            return playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
+        }
+
+        // check answers and determine winner and return a string to declare the winner
+        function playRound(playerSelection, computerSelection) {
+            
+            // rock beats scissors
+            if (playerSelection === "Rock" && computerSelection === "Scissors") {
+                console.log("Rock beats Scissors! You win!")    
+            } else if (playerSelection === "Scissors" && computerSelection === "Rock") {
+                    console.log("Rock beats Scissors! Computer wins!")
+            // paper beats rock
+            } else if (playerSelection === "Paper" && computerSelection === "Rock") {
+                    console.log("Paper beats Rock! You win!")
+            } else if (playerSelection === "Rock" && computerSelection === "Paper") {
+                    console.log("Paper beats Rock! Computer Wins!")
+            // scissors beats paper
+            } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+                    console.log("Scissors beats Paper! You win!")
+            } else if (playerSelection === "Paper" && computerSelection === "Scissors") {
+                    console.log("Scissors beats Paper! Computer Wins!")
+            } 
+        }
+        
+        const playerSelection = playerPlay();
+        const computerSelection = computerPlay();
+        console.log(playRound(playerSelection, computerSelection))
+
+    </script>
+</body>
+</html>
