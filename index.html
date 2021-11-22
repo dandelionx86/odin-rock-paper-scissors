@@ -45,7 +45,9 @@
                     console.log("Scissors beats Paper! You win!")
             } else if (playerSelection === "Paper" && computerSelection === "Scissors") {
                     console.log("Scissors beats Paper! Computer Wins!")
-            } 
+            } else if (playerSelection == computerSelection){
+                    console.log("Tie!")
+            }
         }
         
         const playerSelection = playerPlay();
