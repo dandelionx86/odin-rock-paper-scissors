@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css"/>
+
+    <script>
+        
+        function game() 
+        {
+
+            document.addEventListener("click", function listen()
+            {
+                let btnElements = document.querySelectorAll(".btn");
+                let playerSelection = playerPlay(event);
+                let computerSelection = computerPlay();
+                let winner = getWinner(playerSelection, computerSelection);
+
+                for (let btnElement of btnElements) 
+            {
+                btnElement.addEventListener("click", event => playerPlay(event));
+            }
+            function playerPlay(event)
+            {
+                const currentBtnElement = event.target;
+                if (currentBtnElement.classList.contains("Rock")) 
+                {
+                    return "Rock";
+                } else if (currentBtnElement.classList.contains("Paper")) 
+                {
+                    return "Paper";
+                } else if (currentBtnElement.classList.contains("Scissors")) 
+                {
+                    return "Scissors";
+                }
+            }
+            function computerPlay() 
+            {
+                let moves = ["Rock", "Paper", "Scissors"];
+                let comSelect = moves[Math.floor(Math.random() * moves.length)];
+                return comSelect;
+            }
+
+            function getWinner(playerSelection, computerSelection) 
+            {
+                if (playerSelection === "Rock" && computerSelection === "Scissors") 
+                {
+                    console.log("As it always has, Rock crushes scissors. You win!")    
+                } 
+                    else if (playerSelection === "Scissors" && computerSelection === "Rock") 
+                {
+                        console.log("As it always has, Rock crushes scissors. Computer wins!")
+                // paper beats rock
+                } 
+                    else if (playerSelection === "Paper" && computerSelection === "Rock") 
+                {
+                        console.log("Paper covers Rock! You win!")
+                } 
+                    else if (playerSelection === "Rock" && computerSelection === "Paper") 
+                {
+                        console.log("Paper covers Rock! Computer Wins!")
+                // scissors beats paper
+                } 
+                    else if (playerSelection === "Scissors" && computerSelection === "Paper") 
+                {
+                        console.log("Scissors cuts Paper! You win!")
+                } 
+                    else if (playerSelection === "Paper" && computerSelection === "Scissors") 
+                {
+                        console.log("Scissors cuts Paper! Computer Wins!")
+                } 
+                    else if (playerSelection == computerSelection)
+                {
+                        console.log("Tie!")
+                }
+                    
+            }
+
+            let newH4Element = document.createElement("h4");
+            newH4Element.textContent = "GAME OVER";
+            
+            // console.log(computerSelection);
+            // console.log(playerSelection);
+        })
+
+        
+    }
+
+    let round = 0;
+    while (round <= 3)
+    {
+        game();
+        console.log("HERE");
+    }
+   
+
+    </script>
+</head>
+<body>
+    <div class="header">Rock Paper Scissors</div>
+    <div class="action">Make your move.</div>
+    <button class="btn Rock">Rock</button>
+    <button class="btn Paper">Paper</button>
+    <button class="btn Scissors">Scissors</button> 
+    <h4></h4>
+</body>
+</html>
